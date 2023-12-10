@@ -12,24 +12,24 @@ import { useState, useEffect} from 'react'
 // }
 
 const Challenge = () => {
- const categories = ["users", "posts", "comments"]
- const [category, setCategory] = useState(categories[0])
+ const reqTypes = ["users", "posts", "comments"]
+ const [reqType, setReqType] = useState(reqTypes[0])
  const [items, setItems] = useState([])
  const [fetchError, setFetchError] = useState(null)
  const [isLoading, setIsLoading] = useState(true)
  
 
-//  const API_URL = `https://jsonplaceholder.typicode.com/${category}`
+ const API_URL = 'https://jsonplaceholder.typicode.com/'
 
  
 
  useEffect(() => {
-   console.log("inside use effect ", category)
+   console.log("inside use effect ", reqType)
    setIsLoading(true)
    setFetchError(null)
     const fetchItems = async () => {
     try {
-      const response = await fetch(`https://jsonplaceholder.typicode.com/${category}`)
+      const response = await fetch(`${API_URL}${reqType}`)
       if(!response.ok) throw Error('Did not receive expected data')
       const listItems = await response.json();
      setItems(listItems)
@@ -43,15 +43,15 @@ const Challenge = () => {
     setTimeout(() => {
     (async () => await fetchItems())()
     }, 2000)
-  }, [category])
+  }, [reqType])
 
   return (
     <>
     <section>
-       {categories.map((item) => (
+       {reqTypes.map((item) => (
         <button
             key={item}
-             onClick={() => setCategory(item)}
+             onClick={() => setReqType(item)}
          >
             {item}
         </button>
