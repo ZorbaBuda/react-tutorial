@@ -2,6 +2,7 @@ import React from 'react'
 import { useState, useEffect} from 'react'
 import Form from './Form'
 import List from './List'
+import Table from './Table'
 
 // const Button = ({category, setCategory}) => {
 //     return (
@@ -62,13 +63,19 @@ const Challenge = () => {
         </button>
        ))}
     </section> */}
-
-    <div style={{marginTop : '20px'}}>
+      <div style={{marginTop : '20px'}}>
+    {isLoading  && <p>Loading items...</p>}
+    {fetchError && <p style={{color: "red"}}>{`Error: ${fetchError}`}</p>}
+    {!fetchError &&  !isLoading &&
+       <Table items={items} /> }
+    </div>
+   
+    {/* <div style={{marginTop : '20px'}}>
     {isLoading  && <p>Loading items...</p>}
     {fetchError && <p style={{color: "red"}}>{`Error: ${fetchError}`}</p>}
     {!fetchError &&  !isLoading &&
        <List items={items} /> }
-    </div>
+    </div> */}
     </>
   )
 }
