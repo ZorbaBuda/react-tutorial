@@ -19,14 +19,10 @@ const Challenge = () => {
  const [isLoading, setIsLoading] = useState(true)
  
 
-//  const API_URL = `https://jsonplaceholder.typicode.com/${category}`
-
- 
+ const API_URL = `https://jsonplaceholder.typicode.com/${category}`
 
  useEffect(() => {
-   console.log("inside use effect ", category)
-   setIsLoading(true)
-   setFetchError(null)
+  
     const fetchItems = async () => {
     try {
       const response = await fetch(`https://jsonplaceholder.typicode.com/${category}`)
@@ -43,7 +39,7 @@ const Challenge = () => {
     setTimeout(() => {
     (async () => await fetchItems())()
     }, 2000)
-  }, [category])
+  }, [])
 
   return (
     <>
@@ -51,24 +47,18 @@ const Challenge = () => {
        {categories.map((item) => (
         <button
             key={item}
-             onClick={() => setCategory(item)}
+            // onClick={setCategory(item)}
          >
             {item}
         </button>
        ))}
     </section>
-
-    <div style={{marginTop : '20px'}}>
-    {isLoading  && <p>Loading items...</p>}
-    {fetchError && <p style={{color: "red"}}>{`Error: ${fetchError}`}</p>}
-    {!fetchError &&  !isLoading &&
     <ul>
       
     {items.map((item) => (
-       <li key={item.id}>{JSON.stringify(item)}</li>
+       <li>{JSON.stringify(item)}</li>
     ) )} 
-    </ul> }
-    </div>
+    </ul>
     </>
   )
 }

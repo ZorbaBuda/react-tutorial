@@ -95,8 +95,8 @@ const handleSubmit = (e) => {
   return (
     <div className="App">
      <Challenge />
-      <Header title="Groceries"/>
-      <AddItem 
+      {/* <Header title="Groceries"/> */}
+      {/* <AddItem 
        newItem={newItem}
        setNewItem={setNewItem}
        handleSubmit={handleSubmit}
@@ -115,7 +115,7 @@ const handleSubmit = (e) => {
         handleDelete={handleDelete}
         /> }
       </main>
-      <Footer  length={items.length}/>
+      <Footer  length={items.length}/> */}
     </div>
   );
 }
