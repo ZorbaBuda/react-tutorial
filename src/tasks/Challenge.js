@@ -1,5 +1,7 @@
 import React from 'react'
 import { useState, useEffect} from 'react'
+import Form from './Form'
+import List from './List'
 
 // const Button = ({category, setCategory}) => {
 //     return (
@@ -47,7 +49,10 @@ const Challenge = () => {
 
   return (
     <>
-    <section>
+    <Form 
+       setReqType={setReqType}
+       reqType={reqType} />
+    {/* <section>
        {reqTypes.map((item) => (
         <button
             key={item}
@@ -56,18 +61,13 @@ const Challenge = () => {
             {item}
         </button>
        ))}
-    </section>
+    </section> */}
 
     <div style={{marginTop : '20px'}}>
     {isLoading  && <p>Loading items...</p>}
     {fetchError && <p style={{color: "red"}}>{`Error: ${fetchError}`}</p>}
     {!fetchError &&  !isLoading &&
-    <ul>
-      
-    {items.map((item) => (
-       <li key={item.id}>{JSON.stringify(item)}</li>
-    ) )} 
-    </ul> }
+       <List items={items} /> }
     </div>
     </>
   )
