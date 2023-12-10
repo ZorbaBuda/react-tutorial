@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import AddItem from './AddItem';
 import SearchItem from './SearchItem';
 import apiRequest from './apiRequest';
+import Challenge from './tasks/Challenge';
 
 //using json-server
 // npx json-server -p 3500 -w data/db.json
@@ -93,7 +94,7 @@ const handleSubmit = (e) => {
  
   return (
     <div className="App">
-    
+     <Challenge />
       <Header title="Groceries"/>
       <AddItem 
        newItem={newItem}
