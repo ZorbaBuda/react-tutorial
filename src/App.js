@@ -19,7 +19,7 @@ function App() {
       <Router>
       <Routes>
         <Route exact path="/" element={ <Home />} />
-        <Route path="/post" element={<NewPost />} />
+        <Route exact path="/post" element={<NewPost />} />
         <Route path="/post/:id" element={ <PostPage />} />
         <Route path="/about/" element={ <About />} />
         <Route path="*" element={<Missing />} />
